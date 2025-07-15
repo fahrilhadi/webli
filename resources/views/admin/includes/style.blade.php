@@ -16,3 +16,6 @@
 <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}"/>
 <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}"/>
 <link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}"/>
+{{-- izitoast --}}
+<link rel="stylesheet" href="iziToast.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">

@@ -35,7 +35,13 @@ class AuthenticatedSessionController extends Controller
             $url = '/dashboard';
         }
 
-        return redirect()->intended($url);
+        // toastr notification
+        $notification = array (
+            'message' => 'Login berhasil!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->intended($url)->with($notification);
     }
 
     /**
