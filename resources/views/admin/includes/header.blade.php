@@ -329,16 +329,22 @@
                     </li>
                 </ul>
             </div>
+
+            @php
+                $id = Auth::user()->id;
+                $adminProfile = App\Models\User::findOrFail($id);
+            @endphp
+
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('backend/assets/images/avatars/avatar-2.png') }}" class="user-img" alt="user avatar">
+                    <img src="{{ !empty($adminProfile->photo) ? asset('/storage/public/admin/profile/' . $adminProfile->photo) : asset('/backend/assets/images/no_image.png') }}" class="user-img" alt="user avatar">
                     <div class="user-info">
-                        <p class="user-name mb-0">Pauline Seitz</p>
-                        <p class="designattion mb-0">Web Designer</p>
+                        <p class="user-name mb-0">{{ $adminProfile->name }}</p>
+                        <p class="designattion mb-0">{{ $adminProfile->occupation }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile.index') }}"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-key fs-5"></i><span>Change Password</span></a>
                     </li>

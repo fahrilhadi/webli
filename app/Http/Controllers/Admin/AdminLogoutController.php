@@ -16,12 +16,6 @@ class AdminLogoutController extends Controller
 
         $request->session()->regenerateToken();
 
-        // toastr notification
-        $notification = array (
-            'message' => 'Logout berhasil!',
-            'alert-type' => 'success'
-        );
-
-        return redirect('/login')->with($notification);
+        return redirect('/login');
     }
 }

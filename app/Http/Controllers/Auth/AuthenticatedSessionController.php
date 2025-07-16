@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
 
         // toastr notification
         $notification = array (
-            'message' => 'Login berhasil!',
+            'message' => 'Login Successfully!',
             'alert-type' => 'success'
         );
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 
 Route::get('/', function () {
@@ -29,5 +30,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         // logout
         Route::get('/logout', [AdminLogoutController::class, 'destroy'])->name('admin.logout');
+        // profile
+        Route::resource('/profile', AdminProfileController::class, ['as' => 'admin']);
     });
 });

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            $table->string('address')->nullable();
+            $table->enum('occupation',['Lecturer','Student'])->default('Student');
             $table->string('website')->nullable();
             $table->enum('role',['admin','user'])->default('user');
             $table->enum('status',['1','0'])->default('1');
