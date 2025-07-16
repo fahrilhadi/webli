@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,5 +33,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/logout', [AdminLogoutController::class, 'destroy'])->name('admin.logout');
         // profile
         Route::resource('/profile', AdminProfileController::class, ['as' => 'admin']);
+        // change password
+        Route::resource('/change-password', AdminChangePasswordController::class, ['as' => 'admin']);
     });
 });
