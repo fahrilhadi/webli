@@ -3386,6 +3386,19 @@ div.datedropper .picker .pick-lg-b li {
 /*======================================
       faq-area
  ======================================*/
+
+ .faq-area {
+  background-color: #fcfcfc !important;
+ }
+
+ .cat-area {
+  background-color: #fcfcfc !important;
+ }
+
+ .footer-area {
+  background-color: #fcfcfc !important;
+ }
+
 .faq-panel {
   margin-bottom: 10px; }
   .faq-panel.is-active .faq-heading .faq__title {
@@ -4182,6 +4195,7 @@ div.datedropper .picker .pick-lg-b li {
 ===============================-*/
 .feature-area {
   position: relative;
+  background-color: #fcfcfc;
   z-index: 2; }
 
 .feature-content-wrap {
@@ -5407,6 +5421,11 @@ html {
   max-height: 120px;
   height: auto;
   width: auto;
+}
+
+.img-about {
+  width: 100%;
+  padding-top:40px;
 }
 
 /*====== menu-category =======*/
@@ -7434,6 +7453,7 @@ html {
 
 
 .copy-desc {
+  color: #233d63;
   font-size: 14px; }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .copy-desc {
@@ -7458,6 +7478,11 @@ html {
       color: #ec5252; }
 
 /*===== copyright-content =======*/
+
+.copyright-content {
+  background-color: white;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .dashboard-copyright-content .justify-content-end,
   .copyright-content .justify-content-end {

@@ -1,4 +1,4 @@
-<section class="benefit-area section--padding bg-radial-gradient-gray" id="how-to-use">
+<section class="benefit-area section--padding" id="how-to-use">
     <div class="course-wrapper">
         <div class="container">
             <div class="section-heading text-center">

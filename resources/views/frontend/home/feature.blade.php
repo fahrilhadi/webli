@@ -1,5 +1,11 @@
 <section class="feature-area section--padding" id="features">
     <div class="container">
+        <div class="row text-center pb-5">
+            <div class="col">
+                <h2 class="section__title theme-font-2 pb-3">Features</h2>
+                <p class="section__desc">Personalized learnings for you</p>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-4 responsive-column-half">
                 <div class="info-box info--box hover-y">
@@ -31,23 +37,3 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end feature-area -->
-
-@push('frontend-addon-script')
-<script>
-    function scrollToSection(e, id) {
-        e.preventDefault();
-
-        const yOffset = -80; // offset scroll
-        const element = document.getElementById(id);
-        if (!element) return;
-
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-        // Scroll dengan animasi
-        window.scrollTo({ top: y, behavior: 'smooth' });
-
-        // Ganti hash di address bar
-        history.pushState(null, null, `#${id}`);
-    }
-</script>
-@endpush

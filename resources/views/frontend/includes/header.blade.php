@@ -1,4 +1,4 @@
-<header class="header-menu-area bg-white">
+<header class="header-menu-area bg-white" id="home">
     <div class="header-menu-content pr-150px pl-150px bg-white">
         <div class="container-fluid">
             <div class="main-menu-content">
@@ -19,10 +19,13 @@
                             <nav class="main-menu mx-auto">
                                 <ul class="d-flex justify-content-center">
                                     <li>
-                                        <a href="#home" onclick="scrollToSection(event, 'home')">Home</a>
+                                        <a href="#">Home</a>
                                     </li>
                                     <li>
-                                        <a href="#features" onclick="scrollToSection(event, 'features')">Features</a>
+                                        <a href="#about">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#features">Features</a>
                                     </li>
                                     <li>
                                         <a href="#how-to-use">How to Use</a>
@@ -30,11 +33,14 @@
                                     <li>
                                         <a href="#faqs">FAQs</a>
                                     </li>
+                                    <li>
+                                        <a href="#contact">Contact</a>
+                                    </li>
                                 </ul><!-- end ul -->
                             </nav><!-- end main-menu -->
                             <div class="nav-right-button ml-auto">
-                                <a href="{{ url('/login') }}" class="btn theme-btn theme-btn-sm lh-26 theme-btn-transparent mr-2"><i class="la la-sign-in mr-1"></i> Sign in</a>
-                                <a href="#" class="btn theme-btn theme-btn-sm lh-26 shadow-none"><i class="la la-plus mr-1"></i> Sign up</a>
+                                <a href="{{ url('/login') }}" class="btn theme-btn theme-btn-sm lh-26 theme-btn-transparent mr-2"><i class="la la-sign-in mr-1"></i> Login</a>
+                                <a href="{{ url('/register') }}" class="btn theme-btn theme-btn-sm lh-26 shadow-none"><i class="la la-plus mr-1"></i> Register</a>
                             </div><!-- end nav-right-button -->
                         </div><!-- end menu-wrapper -->
                     </div><!-- end col-lg-9 -->
@@ -48,7 +54,10 @@
         </div><!-- end off-canvas-menu-close -->
         <ul class="generic-list-item off-canvas-menu-list pt-90px">
             <li>
-                <a href="#home" onclick="scrollToSection(event, 'home')">Home</a>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
             </li>
             <li>
                 <a href="#features">Features</a>
@@ -59,11 +68,14 @@
             <li>
                 <a href="#faqs">FAQs</a>
             </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
         </ul>
         <div class="btn-box px-4 pt-5 text-center">
             <a href="{{ url('/login') }}" class="btn theme-btn theme-btn-sm theme-btn-transparent"><i class="la la-sign-in mr-1"></i> Login</a>
             <span class="fs-15 font-weight-medium d-inline-block mx-2">Or</span>
-            <a href="#" class="btn theme-btn theme-btn-sm shadow-none"><i class="la la-plus mr-1"></i> Sign up</a>
+            <a href="{{ url('/register') }}" class="btn theme-btn theme-btn-sm shadow-none"><i class="la la-plus mr-1"></i> Sign up</a>
         </div>
     </div><!-- end off-canvas-menu -->
     <div class="body-overlay"></div>
