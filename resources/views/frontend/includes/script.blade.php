@@ -12,3 +12,34 @@
 <script src="{{ asset('frontend/js/tooltipster.bundle.min.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery.lazy.min.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+
+{{-- iziToast --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
+<script>
+    @if(Session::has('toastr_errors'))
+        $('#registerModal').modal('show');
+    @endif
+</script>
+
+@if ($errors->any())
+  <script>
+    $(document).ready(function() {
+      $('#loginModal').modal('show');
+    });
+  </script>
+@endif
+
+<script>
+    // Saat modal register dibuka, tutup login modal
+    $('#registerModal').on('show.bs.modal', function () {
+        $('#loginModal').modal('hide');
+    });
+
+    // Saat modal login dibuka, tutup register modal
+    $('#loginModal').on('show.bs.modal', function () {
+        $('#registerModal').modal('hide');
+    });
+</script>
+  

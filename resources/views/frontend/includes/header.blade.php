@@ -39,8 +39,8 @@
                                 </ul><!-- end ul -->
                             </nav><!-- end main-menu -->
                             <div class="nav-right-button ml-auto">
-                                <a href="{{ url('/login') }}" class="btn theme-btn theme-btn-sm lh-26 theme-btn-transparent mr-2"><i class="la la-sign-in mr-1"></i> Login</a>
-                                <a href="{{ url('/register') }}" class="btn theme-btn theme-btn-sm lh-26 shadow-none"><i class="la la-plus mr-1"></i> Register</a>
+                                <a href="#" class="btn theme-btn theme-btn-sm lh-26 theme-btn-transparent mr-2" data-toggle="modal" data-target="#loginModal"><i class="la la-sign-in mr-1"></i> Login</a>
+                                <a href="#" class="btn theme-btn theme-btn-sm lh-26 shadow-none" data-toggle="modal" data-target="#registerModal"><i class="la la-plus mr-1"></i> Register</a>
                             </div><!-- end nav-right-button -->
                         </div><!-- end menu-wrapper -->
                     </div><!-- end col-lg-9 -->
@@ -73,9 +73,9 @@
             </li>
         </ul>
         <div class="btn-box px-4 pt-5 text-center">
-            <a href="{{ url('/login') }}" class="btn theme-btn theme-btn-sm theme-btn-transparent"><i class="la la-sign-in mr-1"></i> Login</a>
+            <a href="#" class="btn theme-btn theme-btn-sm theme-btn-transparent" data-toggle="modal" data-target="#loginModal"><i class="la la-sign-in mr-1"></i> Login</a>
             <span class="fs-15 font-weight-medium d-inline-block mx-2">Or</span>
-            <a href="{{ url('/register') }}" class="btn theme-btn theme-btn-sm shadow-none"><i class="la la-plus mr-1"></i> Sign up</a>
+            <a href="#" class="btn theme-btn theme-btn-sm shadow-none" data-toggle="modal" data-target="#registerModal"><i class="la la-plus mr-1"></i> Sign up</a>
         </div>
     </div><!-- end off-canvas-menu -->
     <div class="body-overlay"></div>

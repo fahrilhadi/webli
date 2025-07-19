@@ -8,15 +8,17 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
-        return view('auth.login');
+        // return view('auth.login');
+        return redirect('/');
     }
 
     /**
@@ -24,7 +26,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try {
+            $request->authenticate();
+        } catch (ValidationException $e) {
+            // Gabungkan semua pesan error menjadi satu array
+            session()->flash('toastr_errors_login', collect($e->errors())->flatten()->all());
+            return back()->withInput();
+        }        
 
         $request->session()->regenerate();
 
@@ -36,10 +44,10 @@ class AuthenticatedSessionController extends Controller
         }
 
         // toastr notification
-        $notification = array (
+        $notification = [
             'message' => 'Login successfully!',
             'alert-type' => 'success'
-        );
+        ];
 
         return redirect()->intended($url)->with($notification);
     }

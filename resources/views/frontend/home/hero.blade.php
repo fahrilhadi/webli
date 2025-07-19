@@ -7,7 +7,7 @@
                     <p class="section__desc pb-5">Discover your passion with WeBLI <br> Learns anytime, anywhere!</p>
                 </div><!-- end section-heading -->
                 <div class="cat-btn-box mt-28px">
-                    <a href="{{ url('/register') }}" class="btn theme-btn">Get started <i class="la la-arrow-right icon ml-1"></i></a>
+                    <a href="#" class="btn theme-btn" data-toggle="modal" data-target="#loginModal">Get started <i class="la la-arrow-right icon ml-1"></i></a>
                 </div>
             </div><!-- end hero-content -->
         </div><!-- end container -->
