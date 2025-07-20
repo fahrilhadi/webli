@@ -41,5 +41,20 @@
     $('#loginModal').on('show.bs.modal', function () {
         $('#registerModal').modal('hide');
     });
+
+    // Saat modal recovery dibuka, tutup login modal
+    $('#recoveryModal').on('show.bs.modal', function () {
+        $('#loginModal').modal('hide');
+    });
+
+    // Saat modal login dibuka, tutup recovery modal
+    $('#loginModal').on('show.bs.modal', function () {
+        $('#recoveryModal').modal('hide');
+    });
+
+    // Saat modal register dibuka, tutup recovery modal
+    $('#registerModal').on('show.bs.modal', function () {
+        $('#recoveryModal').modal('hide');
+    });
 </script>
   

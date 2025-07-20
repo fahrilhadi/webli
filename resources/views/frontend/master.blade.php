@@ -74,6 +74,22 @@
           END REGISTER MODAL AREA
 ================================= -->
 
+<!-- ================================
+       START FORGOT PASSWORD AREA
+================================= -->
+@include('frontend.partials.modals.recovery')
+<!-- ================================
+       END FORGOT PASSWORD AREA
+================================= -->
+
+<!-- ================================
+       START RESET PASSWORD AREA
+================================= -->
+@include('frontend.partials.modals.reset-password')
+<!-- ================================
+       END RESET PASSWORD AREA
+================================= -->
+
 <!-- start scroll top -->
 <div id="scroll-top">
     <i class="la la-arrow-up" title="Go top"></i>

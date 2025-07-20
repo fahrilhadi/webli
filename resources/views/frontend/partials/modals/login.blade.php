@@ -40,7 +40,7 @@
                         </div><!-- end input-box -->
                         <div class="btn-box">
                             <div class="d-flex align-items-center justify-content-center pb-3">
-                                <a href="#" class="btn-text fs-14">Forgot my password?</a>
+                                <a href="#" class="btn-text fs-14" data-toggle="modal" data-target="#recoveryModal">Forgot my password?</a>
                             </div>
                             <div class="text-center">
                                 <button class="btn theme-btn" type="submit">Login <i class="la la-arrow-right icon ml-1"></i></button>
@@ -101,5 +101,31 @@
             $('#loginModal').modal('show');
         </script>
     @endif
+
+    @if(Session::has('message_reset_password'))
+        <script>
+            iziToast["{{ Session::get('alert-type', 'success') }}"]({
+                message: "{{ Session::get('message_reset_password') }}",
+                position: 'topCenter',
+                timeout: 5000,
+                close: true,
+                transitionIn: 'fadeInDown',
+                transitionOut: 'fadeOutUp',
+            });
+        </script>
+    @endif
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('modal') === 'login') {
+            $('#loginModal').modal('show');
+    
+            // Hilangkan query modal=login dari URL setelah modal terbuka
+            if (window.history.replaceState) {
+                const cleanUrl = window.location.origin + window.location.pathname;
+                window.history.replaceState(null, null, cleanUrl);
+            }
+        }
+    </script>    
 @endpush
   

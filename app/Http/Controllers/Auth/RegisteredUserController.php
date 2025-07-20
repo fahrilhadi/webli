@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         if ($validator->fails()) {
             // Simpan seluruh pesan error dalam satu key array
-            session()->flash('toastr_errors', $validator->errors()->all());
+            session()->flash('toastr_errors_register', $validator->errors()->all());
 
             return back()->withInput();
         }
