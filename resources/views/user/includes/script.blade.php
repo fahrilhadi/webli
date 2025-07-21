@@ -15,3 +15,17 @@
 <script src="{{ asset('frontend/js/animated-skills.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery.MultiFile.min.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+{{-- izitoast --}}
+<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+<script>
+    @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        var message = "{{ Session::get('message') }}";
+
+        iziToast[type]({
+            title: type === 'success' ? '' : '',
+            message: message,
+            position: 'topCenter'
+        });
+    @endif
+</script>

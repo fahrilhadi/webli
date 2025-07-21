@@ -5,7 +5,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="logo-box logo--box">
-                            <a href="index.html" class="logo"><img src="{{ asset('frontend/images/logo.png') }}" alt="logo"></a>
+                            <a href="{{ route('dashboard') }}" class="logo"><img src="{{ asset('frontend/images/logo.png') }}" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
                                     <i class="la la-bars"></i>
@@ -47,9 +47,13 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="my-courses.html">
+                                                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                                     <i class="la la-power-off mr-1"></i> Logout
                                                                 </a>
+                                                                
+                                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                                    @csrf
+                                                                </form>                                                                
                                                             </li>
                                                             <li><div class="section-block"></div></li>
                                                             <li>
@@ -88,7 +92,14 @@
         <ul class="generic-list-item off-canvas-menu-list pt-1 pb-2 border-bottom border-bottom-gray">
             <li><a href="dashboard-purchase-history.html">Edit Profile</a></li>
             <li><a href="dashboard-purchase-history.html">Change Password</a></li>
-            <li><a href="dashboard-purchase-history.html">Logout</a></li>
+            <li>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
         </ul>
     </div><!-- end off-canvas-menu -->
     <div class="body-overlay"></div>
