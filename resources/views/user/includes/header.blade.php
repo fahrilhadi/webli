@@ -15,29 +15,35 @@
                         <div class="menu-wrapper">
                             <div class="nav-right-button d-flex align-items-center">
                                 <div class="user-action-wrap d-flex align-items-center">
+
+                                    @php
+                                        $id = Auth::user()->id;
+                                        $userProfile = App\Models\User::findOrFail($id);
+                                    @endphp
+
                                     <div class="shop-cart user-profile-cart">
                                         <ul>
                                             <li>
                                                 <div class="shop-cart-btn">
                                                     <div class="avatar-sm">
-                                                        <img class="rounded-full img-fluid" src="{{ asset('frontend/images/small-avatar-1.jpg') }}" alt="Avatar image">
+                                                        <img class="rounded-full img-fluid" src="{{ !empty($userProfile->photo) ? asset('/storage/public/user/profile/' . $userProfile->photo) : asset('/frontend/images/no_image.png') }}" alt="Avatar image">
                                                     </div>
                                                     <span class="dot-status bg-5"></span>
                                                 </div>
                                                 <ul class="cart-dropdown-menu after-none p-0 notification-dropdown-menu">
                                                     <li class="menu-heading-block d-flex align-items-center">
-                                                        <a href="teacher-detail.html" class="avatar-sm flex-shrink-0 d-block">
-                                                            <img class="rounded-full img-fluid" src="{{ asset('frontend/images/small-avatar-1.jpg') }}" alt="Avatar image">
-                                                        </a>
+                                                        <div class="avatar-sm flex-shrink-0 d-block">
+                                                            <img class="rounded-full img-fluid" src="{{ !empty($userProfile->photo) ? asset('/storage/public/user/profile/' . $userProfile->photo) : asset('/frontend/images/no_image.png') }}" alt="Avatar image">
+                                                        </div>
                                                         <div class="ml-2">
-                                                            <h4><a href="teacher-detail.html" class="text-black">Alex Smith</a></h4>
-                                                            <span class="d-block fs-14 lh-20">alexsmith@example.com</span>
+                                                            <h4 class="text-black">{{ $userProfile->name }}</h4>
+                                                            <span class="d-block fs-14 lh-20">{{ $userProfile->occupation }}</span>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <ul class="generic-list-item">
                                                             <li>
-                                                                <a href="my-courses.html">
+                                                                <a href="{{ route('user.profile.index') }}">
                                                                     <i class="la la-user mr-1"></i> Profile
                                                                 </a>
                                                             </li>

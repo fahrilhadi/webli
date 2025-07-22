@@ -28,9 +28,9 @@ class UserTableSeeder extends Seeder
             ],
             // User
             [
-                'name' => 'User',
-                'username' => 'user',
-                'email' => 'user@gmail.com',
+                'name' => 'Fahril Hadi',
+                'username' => 'fahrilhadi',
+                'email' => 'fahril@gmail.com',
                 'password' => Hash::make('111'),
                 'occupation' => 'Student',
                 'website' => 'https://fahrilhadi.com',

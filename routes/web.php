@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -15,10 +16,10 @@ Route::get('/dashboard', function () {
     return view('user.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// route for user
+Route::middleware(['auth', 'verified'])->group(function () {
+    // profile
+    Route::resource('/profile', UserProfileController::class, ['as' => 'user']);
 });
 
 require __DIR__.'/auth.php';

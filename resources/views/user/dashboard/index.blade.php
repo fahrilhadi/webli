@@ -7,11 +7,17 @@
 @section('user-content')
     <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between mb-5">
         <div class="media media-card align-items-center">
+
+            @php
+                $id = Auth::user()->id;
+                $userProfile = App\Models\User::findOrFail($id);
+            @endphp
+
             <div class="media-img media--img media-img-md rounded-full">
-                <img class="rounded-full" src="{{ asset('frontend/images/small-avatar-1.jpg') }}" alt="Student thumbnail image">
+                <img class="rounded-full" src="{{ !empty($userProfile->photo) ? asset('/storage/public/user/profile/' . $userProfile->photo) : asset('/frontend/images/no_image.png') }}" alt="Student thumbnail image">
             </div>
             <div class="media-body">
-                <h2 class="section__title fs-30">Welcome, Tim Buchalka</h2>
+                <h2 class="section__title fs-30">Welcome, {{ $userProfile->name }}</h2>
             </div><!-- end media-body -->
         </div><!-- end media -->
     </div><!-- end breadcrumb-content -->
