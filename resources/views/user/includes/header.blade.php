@@ -48,7 +48,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="shopping-cart.html">
+                                                                <a href="{{ route('user.change-password.index') }}">
                                                                     <i class="la la-key mr-1"></i> Change Password
                                                                 </a>
                                                             </li>
@@ -96,8 +96,8 @@
         </ul>
         <h4 class="off-canvas-menu-heading pt-20px">Profile</h4>
         <ul class="generic-list-item off-canvas-menu-list pt-1 pb-2 border-bottom border-bottom-gray">
-            <li><a href="dashboard-purchase-history.html">Edit Profile</a></li>
-            <li><a href="dashboard-purchase-history.html">Change Password</a></li>
+            <li><a href="{{ route('user.profile.index') }}">Edit Profile</a></li>
+            <li><a href="{{ route('user.change-password.index') }}">Change Password</a></li>
             <li>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Logout

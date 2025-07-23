@@ -6,6 +6,7 @@ use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\User\UserChangePasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 Route::get('/', function () {
@@ -20,6 +21,8 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     // profile
     Route::resource('/profile', UserProfileController::class, ['as' => 'user']);
+    // change password
+    Route::resource('/change-password', UserChangePasswordController::class, ['as' => 'user']);
 });
 
 require __DIR__.'/auth.php';
