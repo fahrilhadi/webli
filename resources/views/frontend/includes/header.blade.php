@@ -38,10 +38,24 @@
                                     </li>
                                 </ul><!-- end ul -->
                             </nav><!-- end main-menu -->
+
+                            @auth
+                            <div class="nav-right-button ml-auto">
+                                <a href="{{ route('dashboard') }}" class="btn theme-btn theme-btn-sm lh-26 theme-btn-transparent mr-2"><i class="la la-sign-in mr-1"></i> Dashboard</a>
+                                <a href="#" class="btn theme-btn theme-btn-sm lh-26 shadow-none" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="la la-power-off mr-1"></i>
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div><!-- end nav-right-button -->
+                            @else
                             <div class="nav-right-button ml-auto">
                                 <a href="#" class="btn theme-btn theme-btn-sm lh-26 theme-btn-transparent mr-2" data-toggle="modal" data-target="#loginModal"><i class="la la-sign-in mr-1"></i> Login</a>
                                 <a href="#" class="btn theme-btn theme-btn-sm lh-26 shadow-none" data-toggle="modal" data-target="#registerModal"><i class="la la-plus mr-1"></i> Register</a>
                             </div><!-- end nav-right-button -->
+                            @endauth
+
                         </div><!-- end menu-wrapper -->
                     </div><!-- end col-lg-9 -->
                 </div><!-- end row -->
