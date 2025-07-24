@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -39,5 +40,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/profile', AdminProfileController::class, ['as' => 'admin']);
         // change password
         Route::resource('/change-password', AdminChangePasswordController::class, ['as' => 'admin']);
+        // home
+        Route::resource('/home', AdminHomeController::class, ['as' => 'admin']);
     });
 });
