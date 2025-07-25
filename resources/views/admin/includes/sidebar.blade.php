@@ -52,24 +52,11 @@
             <div class="menu-title">Home</div>
         </a>
     </li>
-    <li>
-        <a class="has-arrow" href="#">
-            <div class="parent-icon"><i class="bx bx-map-alt"></i>
+    <li class="{{ request()->routeIs('admin.about.index') ? 'mm-active' : '' }}">
+        <a href="{{ route('admin.about.index') }}">
+            <div class="parent-icon"><i class="bx bx-line-chart"></i>
             </div>
-            <div class="menu-title">Maps</div>
-        </a>
-        <ul>
-            <li> <a href="map-google-maps.html"><i class='bx bx-radio-circle'></i>Google Maps</a>
-            </li>
-            <li> <a href="map-vector-maps.html"><i class='bx bx-radio-circle'></i>Vector Maps</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href="https://themeforest.net/user/codervent" target="_blank">
-            <div class="parent-icon"><i class="bx bx-support"></i>
-            </div>
-            <div class="menu-title">Support</div>
+            <div class="menu-title">About</div>
         </a>
     </li>
 </ul>
