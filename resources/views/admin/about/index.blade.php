@@ -32,8 +32,6 @@
 									<thead>
 										<tr>
 											<th class="text-center" scope="col">No.</th>
-											<th class="text-center" scope="col">Title</th>
-											<th class="text-center" scope="col">Subtitle</th>
 											<th class="text-center" scope="col">Description</th>
 											<th class="text-center" scope="col">Image</th>
 											<th class="text-center" scope="col">Action</th>
@@ -46,13 +44,7 @@
                                                     {{ $loop->iteration }}
                                                 </td>
                                                 <td>
-                                                    {{ $adminAboutData->title }}
-                                                </td>
-                                                <td>
-                                                    {{ Str::limit($adminAboutData->subtitle, 10) }}
-                                                </td>
-                                                <td>
-                                                    {{ Str::limit($adminAboutData->description, 10) }}
+                                                    {{ Str::limit($adminAboutData->description, 20) }}
                                                 </td>
                                                 <td>
                                                     <img src="{{ asset('/storage/public/admin/about/' . $adminAboutData->image) }}" alt="" width="50">

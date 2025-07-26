@@ -45,18 +45,25 @@
         </ul>
     </li>
     <li class="menu-label">Landing Page</li>
-    <li class="{{ request()->routeIs('admin.home.index') ? 'mm-active' : '' }}">
+    <li class="{{ request()->routeIs('admin.home.index','admin.home.edit') ? 'mm-active' : '' }}">
         <a href="{{ route('admin.home.index') }}">
             <div class="parent-icon"><i class="bx bx-line-chart"></i>
             </div>
             <div class="menu-title">Home</div>
         </a>
     </li>
-    <li class="{{ request()->routeIs('admin.about.index') ? 'mm-active' : '' }}">
+    <li class="{{ request()->routeIs('admin.about.index','admin.about.edit') ? 'mm-active' : '' }}">
         <a href="{{ route('admin.about.index') }}">
             <div class="parent-icon"><i class="bx bx-line-chart"></i>
             </div>
             <div class="menu-title">About</div>
+        </a>
+    </li>
+    <li class="{{ request()->routeIs('admin.features.index','admin.features.create','admin.features.edit') ? 'mm-active' : '' }}">
+        <a href="{{ route('admin.features.index') }}">
+            <div class="parent-icon"><i class="bx bx-line-chart"></i>
+            </div>
+            <div class="menu-title">Features</div>
         </a>
     </li>
 </ul>

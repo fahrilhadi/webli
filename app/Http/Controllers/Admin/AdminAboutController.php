@@ -59,8 +59,6 @@ class AdminAboutController extends Controller
     {
         // validate form
         $request->validate([
-            'title' => 'required',
-            'subtitle' => 'required',
             'description' => 'required',
             'image' => 'image|mimes:jpeg,jpg,png|max:2048'
         ]);
@@ -82,8 +80,6 @@ class AdminAboutController extends Controller
             // update admin profile with new photo
             $adminAbout->update([
                 'image' => $image->hashName(),
-                'title' => $request->title,
-                'subtitle' => $request->subtitle,
                 'description' => $request->description,
             ]);
 
@@ -91,8 +87,6 @@ class AdminAboutController extends Controller
 
             // update admin about without photo
             $adminAbout->update([
-                'title' => $request->title,
-                'subtitle' => $request->subtitle,
                 'description' => $request->description,
             ]);
         }

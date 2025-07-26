@@ -1,20 +1,20 @@
 @extends('admin.master')
 
 @section('admin-title')
-    Edit Home | WeBLI
+    Edit Feature | WeBLI
 @endsection
 
 @section('admin-content')
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Edit Home</div>
+            <div class="breadcrumb-title pe-3">Edit Feature</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Home</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Feature</li>
                     </ol>
                 </nav>
             </div>
@@ -24,22 +24,22 @@
             <div class="main-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <a href="{{ route('admin.home.index') }}" class="btn btn-primary px-4 mb-3">Back</a>
+                        <a href="{{ route('admin.features.index') }}" class="btn btn-primary px-4 mb-3">Back</a>
                         <div class="card">
-                            <form action="{{ route('admin.home.update', $adminHomeData->id) }}" method="POST">
+                            <form action="{{ route('admin.features.update', $adminFeatureData->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <h6 class="mb-0">Title</h6>
+                                            <h6 class="mb-0">Content Title</h6>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col text-secondary">
-                                            <textarea id="summernote1"class="form-control @error('title') is-invalid @enderror" name="title">{{ old('title', $adminHomeData->title) }}</textarea>
-                                            <!-- error message for title -->
-                                            @error('title')
+                                            <input class="form-control @error('content_title') is-invalid @enderror" name="content_title" value="{{ old('content_title', $adminFeatureData->content_title) }}"></input>
+                                            <!-- error message for content_title -->
+                                            @error('content_title')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
@@ -48,14 +48,14 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <h6 class="mb-0">Subtitle</h6>
+                                            <h6 class="mb-0">Content Subtitle</h6>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col text-secondary">
-                                            <textarea id="summernote2"class="form-control @error('subtitle') is-invalid @enderror" name="subtitle">{{ old('subtitle', $adminHomeData->subtitle) }}</textarea>
-                                            <!-- error message for subtitle -->
-                                            @error('subtitle')
+                                            <input class="form-control @error('content_subtitle') is-invalid @enderror" name="content_subtitle" value="{{ old('content_subtitle', $adminFeatureData->content_subtitle) }}"></input>
+                                            <!-- error message for content_subtitle -->
+                                            @error('content_subtitle')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
@@ -76,13 +76,3 @@
         </div>
     </div>
 @endsection
-
-@push('admin-addon-script')
-    <script>
-        $(document).ready(function() {
-            $('#summernote1, #summernote2').summernote({
-                height: 100
-            });
-        });
-    </script>
-@endpush
