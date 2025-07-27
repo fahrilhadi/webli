@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminFeaturesController;
+use App\Http\Controllers\Admin\AdminHowToUseController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\User\UserChangePasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
@@ -48,5 +49,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/about', AdminAboutController::class, ['as' => 'admin']);
         // features
         Route::resource('/features', AdminFeaturesController::class, ['as' => 'admin']);
+        // features
+        Route::resource('/how-to-use', AdminHowToUseController::class, ['as' => 'admin']);
     });
 });

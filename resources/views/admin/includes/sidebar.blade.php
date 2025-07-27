@@ -66,4 +66,11 @@
             <div class="menu-title">Features</div>
         </a>
     </li>
+    <li class="{{ request()->routeIs('admin.how-to-use.index','admin.how-to-use.create','admin.how-to-use.edit') ? 'mm-active' : '' }}">
+        <a href="{{ route('admin.how-to-use.index') }}">
+            <div class="parent-icon"><i class="bx bx-line-chart"></i>
+            </div>
+            <div class="menu-title">How To Use</div>
+        </a>
+    </li>
 </ul>

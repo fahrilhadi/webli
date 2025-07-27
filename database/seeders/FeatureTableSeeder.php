@@ -17,7 +17,15 @@ class FeatureTableSeeder extends Seeder
             [
                 'content_title' => 'Video Lessons',
                 'content_subtitle' => 'Learn various topics through engaging educational videos',
-            ]
+            ],
+            [
+                'content_title' => 'Audio Lessons',
+                'content_subtitle' => 'Listen to lessons on the go with flexible MP3 audio formats',
+            ],
+            [
+                'content_title' => 'Downloadable Materials',
+                'content_subtitle' => 'Download videos and audios to study offline anytime, anywhere',
+            ],
         ]);
     }
 }

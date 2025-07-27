@@ -62,9 +62,7 @@ class AdminAboutController extends Controller
             'description' => 'required',
             'image' => 'image|mimes:jpeg,jpg,png|max:2048'
         ]);
-
-        // get user by ID
-        $id = Auth::user()->id;
+        
         $adminAbout = About::findOrFail($id);
 
         // check if photo is uploaded

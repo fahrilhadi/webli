@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Feature;
+use App\Models\HowToUse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class AdminFeaturesController extends Controller
+class AdminHowToUseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $adminFeatureDatas = Feature::latest()->get();
-        return view('admin.feature.index', compact('adminFeatureDatas'));
+        $adminHowToUseDatas = HowToUse::latest()->get();
+        return view('admin.how-to-use.index', compact('adminHowToUseDatas'));
     }
 
     /**
@@ -23,7 +23,7 @@ class AdminFeaturesController extends Controller
      */
     public function create()
     {
-        return view('admin.feature.create');
+        return view('admin.how-to-use.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class AdminFeaturesController extends Controller
             'content_subtitle' => 'required',
         ]);
 
-        Feature::create([
+        HowToUse::create([
             'content_title' => $request->content_title,
             'content_subtitle' => $request->content_subtitle,
         ]);
@@ -49,7 +49,7 @@ class AdminFeaturesController extends Controller
         );
 
         // redirect back
-        return redirect()->route('admin.features.index')->with($notification);
+        return redirect()->route('admin.how-to-use.index')->with($notification);
     }
 
     /**
@@ -65,8 +65,8 @@ class AdminFeaturesController extends Controller
      */
     public function edit(string $id)
     {
-        $adminFeatureData = Feature::findOrFail($id);
-        return view('admin.feature.edit', compact('adminFeatureData'));
+        $adminHowToUseData = HowToUse::findOrFail($id);
+        return view('admin.how-to-use.edit', compact('adminHowToUseData'));
     }
 
     /**
@@ -80,9 +80,9 @@ class AdminFeaturesController extends Controller
             'content_subtitle' => 'required',
         ]);
         
-        $adminFeature = Feature::findOrFail($id);
+        $adminHowToUse = HowToUse::findOrFail($id);
 
-        $adminFeature->update([
+        $adminHowToUse->update([
                 'content_title' => $request->content_title,
                 'content_subtitle' => $request->content_subtitle,
             ]);
@@ -94,7 +94,7 @@ class AdminFeaturesController extends Controller
         );
 
         // redirect back
-        return redirect()->route('admin.features.index')->with($notification);
+        return redirect()->route('admin.how-to-use.index')->with($notification);
     }
 
     /**
@@ -102,11 +102,11 @@ class AdminFeaturesController extends Controller
      */
     public function destroy(string $id)
     {
-        //get feature by ID
-        $feature = Feature::findOrFail($id);
+        //get howTouse use by ID
+        $howToUse = HowToUse::findOrFail($id);
 
-        //delete feature
-        $feature->delete();
+        //delete howToUse
+        $howToUse->delete();
 
         // toastr notification
         $notification = array (
@@ -115,6 +115,6 @@ class AdminFeaturesController extends Controller
         );
 
         //redirect to index
-        return redirect()->route('admin.features.index')->with($notification);
+        return redirect()->route('admin.how-to-use.index')->with($notification);
     }
 }

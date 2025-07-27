@@ -1,3 +1,7 @@
+@php
+    $adminHowToUseDatas = App\Models\HowToUse::all();
+@endphp
+
 <section class="benefit-area section--padding" id="how-to-use">
     <div class="course-wrapper">
         <div class="container">
@@ -6,42 +10,25 @@
                 <p class="section__desc">Get started in just a few simple steps and enjoy a seamless learning experience</p>
             </div><!-- end section-heading -->
             <div class="row pt-50px">
-                <div class="col-lg-3 responsive-column-half">
-                    <div class="info-box info--box info--box-2 hover-s border-red">
-                        <div class="icon-element icon-element-md bg-1">
-                            <i class="fa-regular fa-user"></i>
-                        </div>
-                        <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Create an Account</h3>
-                        <p class="info__text">Sign up for free using your active email <p>
-                    </div><!-- end info-box -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column-half">
-                    <div class="info-box info--box info--box-2 hover-s border-purple">
-                        <div class="icon-element icon-element-md bg-2">
-                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        </div>
-                        <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Login</h3>
-                        <p class="info__text">Access your personal learning anytime <p>
-                    </div><!-- end info-box -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column-half">
-                    <div class="info-box info--box info--box-2 hover-s border-yellow">
-                        <div class="icon-element icon-element-md bg-3">
-                            <i class="fa-regular fa-folder-open"></i>
-                        </div>
-                        <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Choose Your Material</h3>
-                        <p class="info__text">Browse through curated videos and audio resources <p>
-                    </div><!-- end info-box -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column-half">
-                    <div class="info-box info--box info--box-2 hover-s border-blue">
-                        <div class="icon-element icon-element-md bg-4">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Start Your Lessons</h3>
-                        <p class="info__text">Study at your own pace—online or offline <p>
-                    </div><!-- end info-box -->
-                </div><!-- end col-lg-3 -->
+                @foreach ($adminHowToUseDatas as $index => $adminHowToUseData)
+                    <div class="col-lg-3 responsive-column-half">
+                        <div class="info-box info--box info--box-2 hover-s border-{{ ['red','purple','yellow','blue'][$index] ?? 'gray' }}">
+                            <div class="icon-element icon-element-md bg-{{ $index + 1 }}">
+                                @if ($index === 0)
+                                    <i class="fa-regular fa-user"></i>
+                                @elseif ($index === 1)
+                                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                @elseif ($index === 2)
+                                    <i class="fa-regular fa-folder-open"></i>
+                                @elseif ($index === 3)
+                                    <i class="fa-solid fa-location-dot"></i>
+                                @endif
+                            </div>
+                            <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">{{ $adminHowToUseData->content_title }}</h3>
+                            <p class="info__text">{{ $adminHowToUseData->content_subtitle }}</p>
+                        </div><!-- end info-box -->
+                    </div><!-- end col-lg-3 -->
+                @endforeach
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end course-wrapper -->
