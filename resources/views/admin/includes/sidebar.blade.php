@@ -73,4 +73,11 @@
             <div class="menu-title">How To Use</div>
         </a>
     </li>
+    <li class="{{ request()->routeIs('admin.faq.index','admin.faq.create','admin.faq.edit') ? 'mm-active' : '' }}">
+        <a href="{{ route('admin.faq.index') }}">
+            <div class="parent-icon"><i class="bx bx-line-chart"></i>
+            </div>
+            <div class="menu-title">FAQ</div>
+        </a>
+    </li>
 </ul>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\User\UserProfileController;
@@ -49,7 +50,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/about', AdminAboutController::class, ['as' => 'admin']);
         // features
         Route::resource('/features', AdminFeaturesController::class, ['as' => 'admin']);
-        // features
+        // how to use
         Route::resource('/how-to-use', AdminHowToUseController::class, ['as' => 'admin']);
+        // faqs
+        Route::resource('/faq', AdminFAQController::class, ['as' => 'admin']);
     });
 });
