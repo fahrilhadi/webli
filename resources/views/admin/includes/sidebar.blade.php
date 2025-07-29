@@ -80,4 +80,11 @@
             <div class="menu-title">FAQ</div>
         </a>
     </li>
+    <li class="{{ request()->routeIs('admin.contact.index','admin.contact.show','admin.contact.edit') ? 'mm-active' : '' }}">
+        <a href="{{ route('admin.contact.index') }}">
+            <div class="parent-icon"><i class="bx bx-line-chart"></i>
+            </div>
+            <div class="menu-title">Contact</div>
+        </a>
+    </li>
 </ul>

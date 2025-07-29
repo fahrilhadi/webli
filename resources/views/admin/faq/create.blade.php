@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col text-secondary">
-                                            <textarea id="summernote4"class="form-control @error('content_description') is-invalid @enderror" name="content_description">{{ old('content_description') }}</textarea>
+                                            <textarea id="summernote4" class="form-control @error('content_description') is-invalid @enderror" name="content_description">{{ old('content_description') }}</textarea>
                                             <!-- error message for content description -->
                                             @error('content_description')
                                                 <span class="text-danger">

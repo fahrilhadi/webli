@@ -99,28 +99,47 @@
             <div class="col-lg-7">
                 <div class="card card-item">
                     <div class="card-body">
-                        <form method="post" action="php/contact.php" class="contact-form">
+                        <form method="POST" action="{{ route('admin.contact.store') }}" class="contact-form">
+                            @csrf
                             <div class="alert alert-success contact-success-message" role="alert">
                                 Thank You! Your message has been sent.
                             </div>
                             <div class="input-box">
                                 <label class="label-text">Your Name</label>
                                 <div class="form-group">
-                                    <input id="name" class="form-control form--control" type="text" name="name" placeholder="Your name">
+                                    <input class="form-control form--control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}" placeholder="Your name">
                                     <span class="la la-user input-icon"></span>
+                                    <!-- error message for name -->
+                                    @error('name')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                             </div><!-- end input-box -->
                             <div class="input-box">
                                 <label class="label-text">Email Address</label>
                                 <div class="form-group">
-                                    <input id="email" class="form-control form--control" type="email" name="email" placeholder="Enter email address">
+                                    <input class="form-control form--control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" placeholder="Enter email address">
                                     <span class="la la-envelope input-icon"></span>
+                                    <!-- error message for email -->
+                                    @error('email')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                             </div><!-- end input-box -->
                             <div class="input-box">
                                 <label class="label-text">Message</label>
                                 <div class="form-group">
-                                    <textarea id="message" class="form-control form--control pl-4" name="message" rows="5" placeholder="Write message"></textarea>
+                                    <textarea id="summernote5" class="form-control form--control pl-4 @error('message') is-invalid @enderror" name="message" rows="5" placeholder="Write message">{{ old('message') }}</textarea>
+                                    <!-- error message for message -->
+                                    @error('message')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                             </div><!-- end input-box -->
                             <div class="btn-box">
@@ -133,3 +152,13 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end contact-area -->
+
+@push('frontend-addon-script')
+    <script>
+        $(document).ready(function() {
+            $('#summernote5').summernote({
+                height: 100
+            });
+        });
+    </script>
+@endpush

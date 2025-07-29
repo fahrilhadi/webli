@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
+use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminFeaturesController;
 use App\Http\Controllers\Admin\AdminHowToUseController;
@@ -54,5 +55,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/how-to-use', AdminHowToUseController::class, ['as' => 'admin']);
         // faqs
         Route::resource('/faq', AdminFAQController::class, ['as' => 'admin']);
+        // contact
+        Route::resource('/contact', AdminContactController::class, ['as' => 'admin']);
     });
 });
