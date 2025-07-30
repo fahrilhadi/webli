@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminAboutController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Admin\AdminContactController;
@@ -22,6 +23,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('user.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // route for user
 Route::middleware(['auth', 'verified'])->group(function () {

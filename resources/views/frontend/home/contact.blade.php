@@ -1,5 +1,5 @@
 <section class="contact-area section--padding position-relative" id="contact">
-<div class="container">
+    <div class="container">
         <div class="row text-center pb-5">
             <div class="col">
                 <h2 class="section__title theme-font-2 pb-3">Contact Us</h2>
@@ -28,7 +28,7 @@
                                         C492.865,448,512,428.865,512,405.333V106.667C512,83.135,492.865,64,469.333,64z M42.667,85.333h426.667
                                         c1.572,0,2.957,0.573,4.432,0.897c-36.939,33.807-159.423,145.859-202.286,184.478c-3.354,3.021-8.76,6.625-15.479,6.625
                                         s-12.125-3.604-15.49-6.635C197.652,232.085,75.161,120.027,38.228,86.232C39.706,85.908,41.094,85.333,42.667,85.333z
-                                         M21.333,405.333V106.667c0-2.09,0.63-3.986,1.194-5.896c28.272,25.876,113.736,104.06,169.152,154.453
+                                            M21.333,405.333V106.667c0-2.09,0.63-3.986,1.194-5.896c28.272,25.876,113.736,104.06,169.152,154.453
                                         C136.443,302.671,50.957,383.719,22.46,410.893C21.957,409.079,21.333,407.305,21.333,405.333z M469.333,426.667H42.667
                                         c-1.704,0-3.219-0.594-4.81-0.974c29.447-28.072,115.477-109.586,169.742-156.009c7.074,6.417,13.536,12.268,18.63,16.858
                                         c8.792,7.938,19.083,12.125,29.771,12.125s20.979-4.188,29.76-12.115c5.096-4.592,11.563-10.448,18.641-16.868
@@ -99,53 +99,38 @@
             <div class="col-lg-7">
                 <div class="card card-item">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.contact.store') }}" class="contact-form">
+                        <form method="POST" id="contactForm" class="contact-form">
                             @csrf
-                            <div class="alert alert-success contact-success-message" role="alert">
-                                Thank You! Your message has been sent.
-                            </div>
+                            <div id="contact-success" class="alert alert-success d-none" role="alert"></div>
+                            <div id="contact-error" class="alert alert-danger d-none" role="alert"></div>
+                        
                             <div class="input-box">
                                 <label class="label-text">Your Name</label>
                                 <div class="form-group">
-                                    <input class="form-control form--control @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}" placeholder="Your name">
+                                    <input class="form-control form--control" type="text" name="name" id="name" required placeholder="Your name">
                                     <span class="la la-user input-icon"></span>
-                                    <!-- error message for name -->
-                                    @error('name')
-                                        <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
                                 </div>
-                            </div><!-- end input-box -->
+                            </div>
+                        
                             <div class="input-box">
                                 <label class="label-text">Email Address</label>
                                 <div class="form-group">
-                                    <input class="form-control form--control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" placeholder="Enter email address">
+                                    <input class="form-control form--control" type="email" name="email" id="email" required placeholder="Enter email address">
                                     <span class="la la-envelope input-icon"></span>
-                                    <!-- error message for email -->
-                                    @error('email')
-                                        <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
                                 </div>
-                            </div><!-- end input-box -->
+                            </div>
+                        
                             <div class="input-box">
                                 <label class="label-text">Message</label>
                                 <div class="form-group">
-                                    <textarea id="summernote5" class="form-control form--control pl-4 @error('message') is-invalid @enderror" name="message" rows="5" placeholder="Write message">{{ old('message') }}</textarea>
-                                    <!-- error message for message -->
-                                    @error('message')
-                                        <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
+                                    <textarea class="form-control form--control pl-4" name="message" id="message" rows="5" placeholder="Write message" required></textarea>
                                 </div>
-                            </div><!-- end input-box -->
+                            </div>
+                        
                             <div class="btn-box">
-                                <button id="send-message-btn" class="btn theme-btn" type="submit">Send Message</button>
-                            </div><!-- end btn-box -->
-                        </form>
+                                <button class="btn theme-btn" type="submit">Send Message</button>
+                            </div>
+                        </form>                        
                     </div><!-- end card-body -->
                 </div><!-- end card -->
             </div><!-- end col-lg-7 -->
@@ -155,10 +140,48 @@
 
 @push('frontend-addon-script')
     <script>
-        $(document).ready(function() {
-            $('#summernote5').summernote({
-                height: 100
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contactForm");
+            const successAlert = document.getElementById("contact-success");
+            const errorAlert = document.getElementById("contact-error");
+        
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+        
+                successAlert.classList.add("d-none");
+                errorAlert.classList.add("d-none");
+        
+                const formData = new FormData(form);
+        
+                fetch("{{ route('contact.store') }}", {
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value,
+                    },
+                    body: formData,
+                })
+                .then(async (response) => {
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw errorData;
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    successAlert.textContent = data.message;
+                    successAlert.classList.remove("d-none");
+        
+                    form.reset(); // clear form fields
+                })
+                .catch(error => {
+                    if (error.errors) {
+                        errorAlert.innerHTML = Object.values(error.errors).map(err => `<div>${err}</div>`).join('');
+                    } else {
+                        errorAlert.textContent = error.message || 'An error occurred.';
+                    }
+                    errorAlert.classList.remove("d-none");
+                });
             });
         });
-    </script>
+    </script>    
 @endpush

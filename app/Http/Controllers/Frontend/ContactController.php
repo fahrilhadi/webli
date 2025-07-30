@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AdminContactController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $adminContactDatas = Contact::latest()->get();
-        return view('admin.contact.index', compact('adminContactDatas'));
+        //
     }
 
     /**
@@ -30,7 +29,17 @@ class AdminContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'    => 'required',
+            'email'   => 'required|email',
+            'message' => 'required',
+        ]);
+    
+        Contact::create($validated);
+    
+        return response()->json([
+            'message' => 'Message sent successfully!',
+        ]);
     }
 
     /**
@@ -38,8 +47,7 @@ class AdminContactController extends Controller
      */
     public function show(string $id)
     {
-        $adminContactData = Contact::findOrFail($id);
-        return view('admin.contact.show', compact('adminContactData'));
+        //
     }
 
     /**
@@ -63,19 +71,6 @@ class AdminContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //get Contact use by ID
-        $contact = Contact::findOrFail($id);
-
-        //delete Contact
-        $contact->delete();
-
-        // toastr notification
-        $notification = array (
-            'message' => 'Deleted Successfully!',
-            'alert-type' => 'success'
-        );
-
-        //redirect to index
-        return redirect()->route('admin.contact.index')->with($notification);
+        //
     }
 }

@@ -14,7 +14,6 @@
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
 {{-- iziToast --}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
 <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
 
 <script>
@@ -57,4 +56,3 @@
         $('#recoveryModal').modal('hide');
     });
 </script>
-  

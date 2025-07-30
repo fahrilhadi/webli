@@ -6,7 +6,11 @@
                 <p class="section__desc">Unlock learning materials content, designed just for you</p>
             </div><!-- end section-heading -->
             <div class="cat-btn-box mt-28px">
-                <a href="#" class="btn theme-btn" data-toggle="modal" data-target="#registerModal">Join with us <i class="la la-arrow-right icon ml-1"></i></a>
+                @auth
+                    <a href="{{ route('dashboard') }}" class="btn theme-btn">Join with us <i class="la la-arrow-right icon ml-1"></i></a>
+                    @else
+                    <a href="#" class="btn theme-btn" data-toggle="modal" data-target="#registerModal">Join with us <i class="la la-arrow-right icon ml-1"></i></a>
+                @endauth
             </div><!-- end cat-btn-box -->
         </div><!-- end cta-content-wrap -->
     </div><!-- end container -->
