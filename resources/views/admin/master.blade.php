@@ -8,6 +8,8 @@
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('backend/assets/images/favicon-32x32.png') }}" type="image/png"/>
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	{{-- CSS Files --}}
     @stack('admin-prepend-style')
     @include('admin.includes.style')

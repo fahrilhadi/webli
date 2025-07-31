@@ -128,9 +128,9 @@
         });
     </script>
 
-    @if(Session::has('toastr_errors'))
+    @if(Session::has('toastr_errors_register'))
         <script>
-            const errors = {!! json_encode(Session::get('toastr_errors')) !!};
+            const errors = {!! json_encode(Session::get('toastr_errors_register')) !!};
 
             // Ambil semua field yg error karena 'is required'
             const requiredFields = errors

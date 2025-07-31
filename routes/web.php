@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminFeaturesController;
 use App\Http\Controllers\Admin\AdminHowToUseController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminStudentsDataController;
 use App\Http\Controllers\User\UserChangePasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
@@ -60,5 +61,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/faq', AdminFAQController::class, ['as' => 'admin']);
         // contact
         Route::resource('/contact', AdminContactController::class, ['as' => 'admin']);
+        // students data
+        Route::resource('/students-data', AdminStudentsDataController::class, ['as' => 'admin']);
     });
 });
