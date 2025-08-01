@@ -54,7 +54,17 @@ class AdminStudentsDataController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $isChecked = $request->input('is_checked', 0);
+
+        $user = User::findOrFail($id);
+        if ($user) {
+            $user->status =  $isChecked;
+            $user->save();
+        }
+
+        return response()->json([
+            'message' => 'Status Updated Successfully.',
+        ]);
     }
 
     /**

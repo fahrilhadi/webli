@@ -55,12 +55,12 @@
                                                     {{ ($adminStudentData->phone) }}
                                                 </td>
                                                 <td class="text-center align-middle">
-                                                    @if ($adminStudentData->status == 1)
-                                                        <span class="badge btn-sm btn-success">Active</span>
-                                                        @else
-                                                        <span class="badge btn-sm btn-danger">InActive</span>
-                                                    @endif
-                                                </td>
+                                                    <span 
+                                                        id="status-badge-{{ $adminStudentData->id }}"
+                                                        class="badge btn-sm {{ $adminStudentData->status == 1 ? 'btn-success' : 'btn-danger' }}">
+                                                        {{ $adminStudentData->status == 1 ? 'Active' : 'InActive' }}
+                                                    </span>
+                                                </td>                                                
                                                 <td class="text-center align-middle">
                                                     <div class="form-check form-switch">
                                                         <input class="form-check-input status-toggle" type="checkbox" id="flexSwitchCheckChecked" data-user-id="{{ $adminStudentData->id }}" {{ $adminStudentData->status ? 'checked' : '' }}>
@@ -80,31 +80,48 @@
     </div>
 @endsection
 
-{{-- @push('admin-addon-script')
+@push('admin-addon-script')
+    <!-- jQuery (sudah ada) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.status-toggle').on('change', function(){
                 var userId = $(this).data('user-id');
                 var isChecked = $(this).is(':checked');
 
-                // send on ajax request to update status
-
                 $.ajax({
-                    url: "{{ route('admin.students-data.update') }}",
+                    url: "/admin/students-data/" + userId,
                     method: "POST",
                     data: {
-                        user_id: userId,
+                        _method: 'PUT',
                         is_checked: isChecked ? 1 : 0,
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(response){
-                        toastr.success(response.message);
+                        // iziToast success
+                        iziToast.success({
+                            message: response.message,
+                            position: 'topCenter'
+                        });
+
+                        // Ubah badge
+                        var badge = $('#status-badge-' + userId);
+                        if (isChecked) {
+                            badge.text('Active');
+                            badge.removeClass('btn-danger').addClass('btn-success');
+                        } else {
+                            badge.text('InActive');
+                            badge.removeClass('btn-success').addClass('btn-danger');
+                        }
                     },
                     error: function(){
-
+                        iziToast.error({
+                            message: 'Failed to update the status',
+                            position: 'topCenter'
+                        });
                     }
-                })
-            })
-        })
+                });
+            });
+        });
     </script>
-@endpush --}}
+@endpush
