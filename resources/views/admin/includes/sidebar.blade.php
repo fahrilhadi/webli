@@ -1,6 +1,6 @@
 <div class="sidebar-header">
     <div>
-        <img src="{{ asset('backend/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+        <img src="{{ asset('frontend/images/favicon.png') }}" class="logo-icon" alt="logo icon">
     </div>
     <div>
         <h4 class="logo-text">WeBLI</h4>
