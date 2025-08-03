@@ -4,10 +4,24 @@
     Dashboard | WeBLI
 @endsection
 
+@php
+    $id = Auth::user()->id;
+    $userId = App\Models\User::find($id);
+    $status = $userId->status;
+@endphp
+
 @section('user-content')
     <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between mb-5">
+        @if ($status == 0)
+            <div class="alert alert-danger mb-3">
+                <strong>Warning!</strong> Your account is currently inactive. Please contact support for assistance.
+            </div>
+        @elseif ($status == 1)
+            <div class="alert alert-success mb-3" id="active-alert">
+                <strong>Success!</strong> Your account is active. Enjoy your learning experience!
+            </div>
+        @endif
         <div class="media media-card align-items-center">
-
             @php
                 $id = Auth::user()->id;
                 $userProfile = App\Models\User::findOrFail($id);
@@ -160,3 +174,16 @@
         </div><!-- end col-lg-4 -->
     </div><!-- end row -->
 @endsection
+
+@push('user-addon-script')
+    <script>
+        setTimeout(function () {
+            let alertBox = document.getElementById('active-alert');
+            if (alertBox) {
+                alertBox.style.transition = 'opacity 0.5s ease-out';
+                alertBox.style.opacity = 0;
+                setTimeout(() => alertBox.remove(), 500); // Remove element after fade out
+            }
+        }, 5000); // 5000 ms = 5 seconds
+    </script>
+@endpush

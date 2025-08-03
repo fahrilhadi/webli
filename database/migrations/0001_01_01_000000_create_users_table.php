@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum('occupation',['Lecturer','Student'])->default('Student');
             $table->string('website')->nullable();
             $table->enum('role',['admin','user'])->default('user');
-            $table->enum('status',['1','0'])->default('1');
+            $table->enum('status',['1','0'])->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
