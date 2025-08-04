@@ -28,7 +28,7 @@
                         <hr/>
 						<div class="card">
 							<div class="card-body">
-								<table class="table table-bordered mb-0">
+								<table id="example" class="table table-bordered mb-0">
 									<thead>
 										<tr>
 											<th class="text-center" scope="col">No.</th>

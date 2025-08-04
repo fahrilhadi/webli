@@ -9,6 +9,8 @@
 <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
 <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 <!--app JS-->
 <script src="{{ asset('backend/assets/js/app.js') }}"></script>
 <script>
@@ -31,3 +33,8 @@
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+        } );
+</script>

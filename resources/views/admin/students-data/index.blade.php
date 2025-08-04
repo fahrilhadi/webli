@@ -28,7 +28,7 @@
                         <hr/>
 						<div class="card">
 							<div class="card-body">
-								<table class="table table-bordered mb-0">
+								<table id="example" class="table table-bordered mb-0">
 									<thead>
 										<tr>
 											<th class="text-center" scope="col">No.</th>
@@ -81,8 +81,6 @@
 @endsection
 
 @push('admin-addon-script')
-    <!-- jQuery (sudah ada) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.status-toggle').on('change', function(){
